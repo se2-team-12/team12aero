@@ -34,9 +34,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       
-  deployment:
-    development:
-      branch: master
-      commands:
-        - scp -r https://jyoung9@bitbucket.org/se2-team-12/team12aero.git/* circleci@team12.softwareengineeringii.com:~/team12aero
+deployment:
+  development:
+    branch: master
+    commands:
+      - scp -r https://jyoung9@bitbucket.org/se2-team-12/team12aero.git/* circleci@team12.softwareengineeringii.com:~/team12aero
 
