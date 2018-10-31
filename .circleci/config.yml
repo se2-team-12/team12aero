@@ -26,14 +26,17 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      # run tests!
-      - run: yarn test
-
+      
+  deployment:
+    development:
+      branch: master
+      commands:
+        - scp -r https://jyoung9@bitbucket.org/se2-team-12/team12aero.git/* circleci@team12.softwareengineeringii.com:~/team12aero
 
