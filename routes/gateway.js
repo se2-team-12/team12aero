@@ -13,11 +13,7 @@ let dailyDiagnostic = require('../models/dailyDiagnosticResultModel');
 
 /* GET gateway listing. */
 router.get("/:GatewayId", (req, res, next) => {
-    var token = req.headers['accesstoken'];
-    let tokenId = req.body.Token
-        if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-  
-    if (token == tokenId){
+
     const id = req.params.GatewayId;
     var query = {GatewayId: id}
 
@@ -34,10 +30,7 @@ router.get("/:GatewayId", (req, res, next) => {
             });
         });
     }
-    else{
-        return res.status(401).send({ auth: false, message: 'Invalid Token.' });
-    }
-    
+
 
 });
 
