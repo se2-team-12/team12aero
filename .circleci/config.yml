@@ -38,5 +38,5 @@ deployment:
   development:
     branch: master
     commands:
-      - scp -r https://git@github.org/se2-team-12/team12aero circleci@team12.softwareengineeringii.com:~/.
+      - scp -r * circleci@team12.softwareengineeringii.com:~/.
 
