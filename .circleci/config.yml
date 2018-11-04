@@ -37,6 +37,6 @@ jobs:
       - deploy:
           command: |
             ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com
-            cd team12aero
-            git pull
+            "cd team12aero"
+            "git pull"
             #scp -r ~/team12aero 'circleci@team12.dev.softwareengineeringii.com:~/.'
