@@ -29,7 +29,6 @@ router.get("/:GatewayId", (req, res, next) => {
                 error: err
             });
         });
-    }
 
 
 });
