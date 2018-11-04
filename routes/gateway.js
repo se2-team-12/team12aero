@@ -201,7 +201,10 @@ router.post('/newGateway', function (req, res) {
         .exec()
         .then(docs =>{
             console.log(docs);
-            res.status(200).json(docs);
+            res.status(200).json({
+                Gateway: docs,
+                message: "Gateway initialized successfully" 
+            });
         })
         .catch(err => {
             console.log(err);
