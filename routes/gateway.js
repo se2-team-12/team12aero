@@ -7,7 +7,8 @@ var Schema = mongoose.Schema;
 var Heartbeat = require('../models/heartbeatModel');
 var Diagnostic = require('../models/diagnosticModel'); 
 let Gateway = require('../models/gatewayModel'); 
-let dailyDiagnostic = require('../models/dailyDiagnosticResultModel');
+let dailyDiagnosticResult = require('../models/dailyDiagnosticResultModel');
+let dailyDiagnostic = require('../models/dailyDiagnosticModel');
 
 
 
@@ -152,7 +153,7 @@ router.post('/diagnostic/test', function (req, res) {
 
 router.post('/dailyDiagnostic/test', function (req, res) {
 
-    var DDDTest = new dailyDiagnostic({
+    var DDDTest = new dailyDiagnosticResult({
 
         GatewayId: req.body.GatewayId,
         Type: req.body.Type,
