@@ -33,10 +33,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      
-      - deployment:
-          development:
-            branch: master
+        
+      - deploy:
           commands:
-            - scp -r * circleci@team12.softwareengineeringii.com:~/.
-
+            - scp -r * circleci@team12.dev.softwareengineeringii.com:~/.
