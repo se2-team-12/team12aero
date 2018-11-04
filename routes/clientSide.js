@@ -333,7 +333,7 @@ router.post('/user', function (req, res, bcrypt) {
 
 router.delete("/:GatewayId", (req, res, next) => {
   const id = req.params.GatewayId;
-  Heartbeat.remove({ _id: id })
+  Heartbeat.remove({ GatewayId: id })
     .exec()
     .then(result => {
         console.log("Heartbeat deleted");
