@@ -35,5 +35,5 @@ jobs:
         
         
       - deploy:
-          command:
-            - 'scp -r * circleci@team12.dev.softwareengineeringii.com:~/.'
+          command: |
+            'scp -r * circleci@team12.dev.softwareengineeringii.com:~/.'
