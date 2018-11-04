@@ -36,5 +36,5 @@ jobs:
         
       - deploy:
           command: |
+            oStrictHostKeyChecking=no
             scp -r ~/team12aero 'circleci@team12.dev.softwareengineeringii.com:~/.'
-            printf 'yes\n'
