@@ -197,7 +197,7 @@ router.post('/newGateway', function (req, res) {
     var query = {GatewayId: id}
 
 
-    Gateway.find(query)
+    Gateway.findOne(query)
         .exec()
         .then(docs =>{
             console.log(docs);
