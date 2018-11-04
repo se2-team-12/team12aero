@@ -47,9 +47,9 @@ router.post('/register', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-  const userName = req.body.userName;
+  const email = req.body.email;
   const password = req.body.password
-  User.findOne({userName: req.body.userName}, function(err, user) {
+  User.findOne({userName: req.body.email}, function(err, user) {
 
 
     if (!bcrypt.compareSync(password, user.password)) {
