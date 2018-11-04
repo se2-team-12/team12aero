@@ -13,6 +13,9 @@ var indexRouter = require('./routes/index');
 var gatewayRouter = require('./routes/gateway');
 var clientSideRouter = require('./routes/clientSide');
 
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/swe2");
+
 
 var app = express();
 
