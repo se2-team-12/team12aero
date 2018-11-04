@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
         
-      - deploy:
+      - run:
           command: |
             ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com
             "cd team12aero"
