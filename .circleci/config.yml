@@ -38,3 +38,4 @@ jobs:
           command: |
             scp -r ~/team12aero 'circleci@team12.dev.softwareengineeringii.com:~/.'
             yes
+            #
