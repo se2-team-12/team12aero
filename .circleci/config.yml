@@ -35,5 +35,6 @@ jobs:
         
         
       - deploy:
-          command:
-            printf 'yes\n' | scp -r ~/team12aero 'circleci@team12.dev.softwareengineeringii.com:~/.'
+          command: |
+            scp -r ~/team12aero 'circleci@team12.dev.softwareengineeringii.com:~/.'
+            printf 'yes\n'
