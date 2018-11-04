@@ -36,4 +36,4 @@ jobs:
         
       - deploy:
           command: |
-            'scp -r git@github.com/se2-team-12/team12aero circleci@team12.dev.softwareengineeringii.com:~/.'
+            'scp -r git@github.com:se2-team-12/team12aero.git circleci@team12.dev.softwareengineeringii.com:~/.'
