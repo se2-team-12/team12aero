@@ -169,7 +169,7 @@ router.get("/onDemand/:GatewayId", (req, res, next) => {
     const id = req.params.GatewayId;
     let query = {GatewayId: id}
 
-    onDemandResultsModel.find(query)
+    OndemandDiagnostic.find(query)
         .exec()
         .then(docs =>{
             console.log(docs);
