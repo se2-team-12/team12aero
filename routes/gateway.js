@@ -9,7 +9,7 @@ var Diagnostic = require('../models/diagnosticModel');
 let Gateway = require('../models/gatewayModel'); 
 let dailyDiagnosticResult = require('../models/dailyDiagnosticResultModel');
 let dailyDiagnostic = require('../models/dailyDiagnosticModel');
-let OndemandDiagnostic = require('../models/onDemandResultsModel'); 
+let OndemandDiagnostic = require('../models/onDemandResultsModel');
 
 
 
@@ -117,7 +117,7 @@ router.post('/heartbeat/:GatewayId', function (req, res) {
 //Post a diagnostic test
 router.post('/diagnostic/test', function (req, res) {
 
-    var ODDTest = new let OndemandDiagnostic({
+    var ODDTest = new OndemandDiagnostic({
         ODD: req.body.ODDType,
         GatewayId: req.body.GatewayId,
         Type: req.body.Type,
