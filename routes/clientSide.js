@@ -69,12 +69,12 @@ router.post('/login', function(req, res) {
 });
 
 /* GET gateway listing. */
-router.get('/', function (req, res) {
+router.get('/heartbeats', function (req, res) {
     Heartbeat.find()
         .exec()
         .then(docs =>{
             console.log(docs);
-            res.status(200).json(docs);
+            test = docs;
         })
         .catch(err => {
             console.log(err);
@@ -255,7 +255,7 @@ router.post('/dailyDiagnostic', function (req, res) {
         .then(result => {
             console.log(result);
             res.status(201).json({
-                dailyDiagnostic: result,
+                Diagnostic: result,
                 message: "Success" 
             });
         })
