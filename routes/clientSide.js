@@ -255,7 +255,7 @@ router.post('/dailyDiagnostic', function (req, res) {
         .then(result => {
             console.log(result);
             res.status(201).json({
-                Diagnostic: result,
+                dailyDiagnostic: result,
                 message: "Success" 
             });
         })
