@@ -13,7 +13,8 @@ let Heartbeat = require('../models/heartbeatModel');
 let Diagnostic = require('../models/diagnosticModel'); 
 let User = require('../models/userModel');
 let Gateway = require('../models/gatewayModel');
-let dailyDiagnostic = require('../models/dailyDiagnosticResultModel');  
+let dailyDiagnostic = require('../models/dailyDiagnosticResultModel'); 
+let OndemandDiagnostic = require('../models/onDemandResultsModel');   
 
 const validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
@@ -143,22 +144,18 @@ router.post('/users/login', function(req, res) {
 router.get("/:GatewayId", (req, res, next) => {
   const id = req.params.GatewayId;
   let query = {GatewayId: id}
-  Heartbeat.find(query)
-    .exec()
-    .then(doc => {
-      console.log("From database", doc);
-      if (doc) {
-        res.status(200).json(doc);
-      } else {
-        res
-          .status(404)
-          .json({ message: "No valid entry found for provided ID" });
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ error: err });
-    });
+    Heartbeat.find(query)
+        .exec()
+        .then(docs =>{
+            console.log(docs);
+            res.status(200).json(docs);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 router.put('/', function (req, res) {
@@ -172,7 +169,7 @@ router.get("/onDemand/:GatewayId", (req, res, next) => {
     const id = req.params.GatewayId;
     let query = {GatewayId: id}
 
-    Diagnostic.find(query)
+    onDemandResultsModel.find(query)
         .exec()
         .then(docs =>{
             console.log(docs);
