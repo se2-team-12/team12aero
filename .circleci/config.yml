@@ -40,7 +40,7 @@ jobs:
         
       - run:
           command: |
-            #ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com
+            ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com "deploy_project.sh"
             #cd team12aero
             ssh-agent bash -c 'ssh-add /home/circleci/.ssh/id_rsa_git; git pull'
             #scp -r ~/team12aero/* 'circleci@team12.dev.softwareengineeringii.com:~/.'
