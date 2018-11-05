@@ -44,3 +44,4 @@ jobs:
             #cd team12aero
             ssh-agent bash -c 'ssh-add /home/circleci/.ssh/id_rsa_git; git pull'
             #scp -r ~/team12aero/* 'circleci@team12.dev.softwareengineeringii.com:~/.'
+            
