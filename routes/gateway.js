@@ -73,7 +73,7 @@ router.post('/heartbeat/:GatewayId', function (req, res) {
         });
 
         var heartbeat = new Heartbeat({
-        GatewayId: req.body.GatewayId,
+        GatewayId: id,
         TimeStamp: req.body.TimeStamp,
     });
 
@@ -232,7 +232,7 @@ router.put('/', function (req, res) {
 
 router.delete('/', function (req, res) {
         var heartbeat = new Heartbeat({
-        GatewayId: req.params.GatewayId,
+        GatewayId: req.body.GatewayId,
         TimeStamp: req.body.TimeStamp,
         status: req.body.status
     });
