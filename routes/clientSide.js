@@ -143,7 +143,7 @@ router.post('/users/login', function(req, res) {
 
 router.get("/:GatewayId", (req, res, next) => {
   const id = req.params.GatewayId;
-  let query = {GatewayId: id}
+  var query = {GatewayId: id}
     Heartbeat.find(query)
         .exec()
         .then(docs =>{
@@ -255,7 +255,7 @@ router.post('/dailyDiagnostic', function (req, res) {
         .then(result => {
             console.log(result);
             res.status(201).json({
-                dailyDiagnostic: result,
+                Diagnostic: result,
                 message: "Success" 
             });
         })
