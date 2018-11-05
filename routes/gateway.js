@@ -45,8 +45,8 @@ router.post('/heartbeat/:GatewayId', function (req, res) {
         if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
   
     if (token == tokenId){
-    var test2 = ""
-    var test = "";
+    var test2 = [];
+    var test = [];
     Diagnostic.find(query)
         .exec()
         .then(docs =>{
