@@ -241,7 +241,7 @@ router.post('/', function (req, res) {
 
 router.post('/dailyDiagnostic', function (req, res) {
 
-    let dailyDiagnosticTest = new dailyDiagnosticResult({
+    let dailyDiagnosticTest = new dailyDiagnostic({
         dailyHour: req.body.dailyHour,
         dailyMin: req.body.dailyMin,
         dailySecond: req.body.dailySecond,
