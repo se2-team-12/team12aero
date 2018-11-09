@@ -8,7 +8,7 @@ let onDemandDiagnosticSchema = new Schema({
     DDD: String,
     Type: String,
     Result: String,
-    IsClear: Boolean,
+    TimeStamp: String,
     GatewayId: String
 
 
