@@ -13,7 +13,8 @@ let Heartbeat = require('../models/heartbeatModel');
 let Diagnostic = require('../models/diagnosticModel'); 
 let User = require('../models/userModel');
 let Gateway = require('../models/gatewayModel');
-let dailyDiagnostic = require('../models/dailyDiagnosticResultModel'); 
+let dailyDiagnosticResult = require('../models/dailyDiagnosticResultModel');
+let dailyDiagnostic = require('../models/dailyDiagnosticModel'); 
 let OndemandDiagnostic = require('../models/onDemandResultsModel');   
 
 const validPassword = function(password) {
