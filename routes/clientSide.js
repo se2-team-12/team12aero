@@ -13,8 +13,8 @@ let Heartbeat = require('../models/heartbeatModel');
 let Diagnostic = require('../models/diagnosticModel'); 
 let User = require('../models/userModel');
 let Gateway = require('../models/gatewayModel');
-let dailyDiagnosticResult = require('../models/dailyDiagnosticResultModel');
-let dailyDiagnostic = require('../models/dailyDiagnosticModel'); 
+let dailyDiagnostic = require('../models/dailyDiagnosticResultModel');
+let dailyDiagnosticResult = require('../models/dailyDiagnosticResultModel'); 
 let OndemandDiagnostic = require('../models/onDemandResultsModel');   
 
 const validPassword = function(password) {
@@ -69,12 +69,12 @@ router.post('/login', function(req, res) {
   });
 });
 
-/* GET gateway listing. */
+/* GET heartbeats */
 router.get('/heartbeats', function (req, res) {
     Heartbeat.find()
         .exec()
         .then(docs =>{
-            console.log(docs);
+            //console.log(docs);
             test = docs;
         })
         .catch(err => {
@@ -86,62 +86,25 @@ router.get('/heartbeats', function (req, res) {
 
 });
 
-
-
-router.post('/users/login', function(req, res) {
-     let email = req.body.email;
-     let password = req.body.password;
-     let userName = req.body.userName;
-     let data;
-    if (email.length > 0 && password.length > 0) {
-         data = {
-             email: email,
-             password: password
-         };
-    }
-    else if(username.length > 0 && password.length > 0) {
-         data = {
-             username: username,
-             password: password
-         };
-    } 
-    else {
-         res.json({
-             status: 0,
-             message: err
-         });
-    }
-
-
-    User.findOne(data, function(err, user) {
-        if (err) {
-             res.json({
-                 status: 0,
-                 message: err
-             });
-        }
-        else if (!user) {
-             res.json({
-                 status: 0,
-                 msg: "not found"
-             });
-         }
-        else if (user){
-            res.json({
-                status: 1,
-                message: "Successful login"
+/* GET gateways associated with email */
+router.get("/gateways/:email", (req, res, next) => {
+  const id = req.params.email;
+  var query = {email: id}
+    Gateway.find(query)
+        .exec()
+        .then(docs =>{
+            console.log(docs);
+            res.status(200).json(docs);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
             });
-        }
-     
-        else {
-            res.json({
-                status: 0,
-                msg: "Invalid Fields"
-            });
-        }
-    });
+        });
 });
 
+//Get heartbeats associated with gateway
 router.get("/:GatewayId", (req, res, next) => {
   const id = req.params.GatewayId;
   var query = {GatewayId: id}
@@ -165,7 +128,7 @@ router.put('/', function (req, res) {
     });
     //res.status(202).send();
 });
-
+//Get on demand diagnostic test
 router.get("/onDemand/:GatewayId", (req, res, next) => {
     const id = req.params.GatewayId;
     let query = {GatewayId: id}
@@ -189,7 +152,7 @@ router.get("/dailyDiagnostic/:GatewayId", (req, res, next) => {
     const id = req.params.GatewayId;
     let query = {GatewayId: id}
 
-    dailyDiagnosticResult.find(query)
+    dailyDiagnostic.find(query)
         .exec()
         .then(docs =>{
             console.log(docs);
@@ -213,7 +176,7 @@ router.put('/', function (req, res) {
 });
 
 
-
+//Post a on demand diagnostics test
 router.post('/', function (req, res) {
 
     let ODDTest = new Diagnostic({
@@ -238,7 +201,7 @@ router.post('/', function (req, res) {
             });
         });
 });
-
+// Post a daily diagnostics test
 router.post('/dailyDiagnostic', function (req, res) {
 
     let dailyDiagnosticTest = new dailyDiagnostic({
@@ -267,7 +230,7 @@ router.post('/dailyDiagnostic', function (req, res) {
             });
         });
 });
-
+// Create a new gateway and receive a gatewayId
 router.post('/createGateway', function (req, res) {
     let newGateway = new Gateway({
         GatewayId: new mongoose.Types.ObjectId(),
@@ -331,10 +294,10 @@ router.post('/user', function (req, res, bcrypt) {
 
 router.delete("/:GatewayId", (req, res, next) => {
   const id = req.params.GatewayId;
-  Heartbeat.remove({ GatewayId: id })
+  Gateway.remove({ GatewayId: id })
     .exec()
     .then(result => {
-        console.log("Heartbeat deleted");
+        console.log("Gateway deleted");
       res.status(200).json(result);
     })
     .catch(err => {
@@ -350,5 +313,3 @@ router.delete("/:GatewayId", (req, res, next) => {
 router.options('/', function (req, res) {
     res.header('Allow', 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD').status(204).send();
 });
-
-module.exports = router;
