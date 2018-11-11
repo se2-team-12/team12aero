@@ -10,7 +10,7 @@ jobs:
       - image: circleci/node:8.10
       
       # Specify service dependencies here if necessary
-      - image: circleci/mongo:3.6.3
+      #- image: circleci/mongo:3.6.3
 
     working_directory: ~/team12aero
 
@@ -36,18 +36,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
         
-      - run:
-          #deploy
-          command:|
-            - ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com "./deploy_project.sh"
-            #~/deploy_project.sh :
-            ##change to project working directory
-            #cd ~/team12aero;
-            ##add id_rsa_git key file for github access, clone project repo from origin
-            #ssh-agent bash -c 'ssh-add /home/circleci/.ssh/id_rsa_git; git pull'
-            ##install dependencies with npm
-            #npm install
-            ##node test => launch process manager to bring project online
-            #node app.js && pm2 restart www
+      - run: ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com "./deploy_project.sh"
 
             
