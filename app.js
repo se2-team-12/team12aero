@@ -1,24 +1,24 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 
-var usersRouter = require('./routes/users');
-var indexRouter = require('./routes/index');
-var gatewayRouter = require('./routes/gateway');
-var clientSideRouter = require('./routes/clientSide');
-var newUsersRouter = require('./routes/tokenUser');
+let usersRouter = require('./routes/users');
+let indexRouter = require('./routes/index');
+let gatewayRouter = require('./routes/gateway');
+let clientSideRouter = require('./routes/clientSide');
+let newUsersRouter = require('./routes/tokenUser');
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/swe2");
 
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
