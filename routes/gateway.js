@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router({});
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/swe2");
+mongoose.connect('mongodb://localhost:27017/swe2', { useNewUrlParser: true, useCreateIndex: true});
 var Schema = mongoose.Schema;
 
 var Heartbeat = require('../models/heartbeatModel');
