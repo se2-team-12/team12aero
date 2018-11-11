@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router({});
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/swe2");
+mongoose.connect('mongodb://localhost:27017/swe2', {useNewUrlParser: true,useCreateIndex: true});
+
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 var bcryptNodejs = require("bcrypt-nodejs");
