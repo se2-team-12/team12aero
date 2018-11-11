@@ -39,9 +39,17 @@ jobs:
         
         
       - run:
-          command: |
-            ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com "./deploy_project.sh"
-            #cd team12aero
-            ssh-agent bash -c 'ssh-add /home/circleci/.ssh/id_rsa_git; git pull'
-            #scp -r ~/team12aero/* 'circleci@team12.dev.softwareengineeringii.com:~/.'
+          name: deploy
+          command:
+            - ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com "./deploy_project.sh"
+            #~/deploy_project.sh :
+            ##change to project working directory
+            #cd ~/team12aero;
+            ##add id_rsa_git key file for github access, clone project repo from origin
+            #ssh-agent bash -c 'ssh-add /home/circleci/.ssh/id_rsa_git; git pull'
+            ##install dependencies with npm
+            #npm install
+            ##node test => launch process manager to bring project online
+            #node app.js && pm2 restart www
+
             
