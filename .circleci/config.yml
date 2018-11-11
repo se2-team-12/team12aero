@@ -10,7 +10,7 @@ jobs:
       - image: circleci/node:8.10
       
       # Specify service dependencies here if necessary
-       - image: circleci/mongo:3.6.3
+      - image: circleci/mongo:3.6.3
 
     working_directory: ~/team12aero
 
