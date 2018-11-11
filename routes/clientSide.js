@@ -313,3 +313,5 @@ router.delete("/:GatewayId", (req, res, next) => {
 router.options('/', function (req, res) {
     res.header('Allow', 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD').status(204).send();
 });
+
+module.exports = router;
