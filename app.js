@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/tokenUsers', newUsersRouter);
+app.use('/tokenUser', newUsersRouter);
 app.use('/gateway', gatewayRouter);
 app.use('/clientSide', clientSideRouter);
 
