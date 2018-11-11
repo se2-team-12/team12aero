@@ -38,7 +38,7 @@ jobs:
         
       - run:
           #deploy
-          command:
+          command:|
             - ssh -oStrictHostKeyChecking=no circleci@team12.dev.softwareengineeringii.com "./deploy_project.sh"
             #~/deploy_project.sh :
             ##change to project working directory
