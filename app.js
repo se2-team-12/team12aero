@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var indexRouter = require('./routes/index');
 var gatewayRouter = require('./routes/gateway');
 var clientSideRouter = require('./routes/clientSide');
-var newUsersRouter = require('./routes/tokenUsers');
+var newUsersRouter = require('./routes/tokenUser');
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/swe2");
