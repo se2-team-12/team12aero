@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var indexRouter = require('./routes/index');
 var gatewayRouter = require('./routes/gateway');
 var clientSideRouter = require('./routes/clientSide');
+var newUsersRouter = require('./routes/TokenUsers');
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/swe2");
@@ -34,6 +35,7 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/newUsers', newUsersRouter);
 app.use('/gateway', gatewayRouter);
 app.use('/clientSide', clientSideRouter);
 
