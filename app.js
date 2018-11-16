@@ -15,7 +15,7 @@ let clientSideRouter = require('./routes/clientSide');
 let newUsersRouter = require('./routes/tokenUser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/swe2', { useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect('mongodb://localhost:27017/team12aero', { useNewUrlParser: true, useCreateIndex: true});
 
 
 const app = express();
