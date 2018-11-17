@@ -1,4 +1,5 @@
 //the test the env variable is set to test
+//Test
 process.env.NODE_ENV = 'test';
 
 var supertest = require("supertest");
