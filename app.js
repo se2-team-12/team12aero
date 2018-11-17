@@ -13,6 +13,7 @@ let indexRouter = require('./routes/index');
 let gatewayRouter = require('./routes/gateway');
 let clientSideRouter = require('./routes/clientSide');
 let newUsersRouter = require('./routes/tokenUser');
+const fileRouter = require('./routes/imagefile');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/team12aero', { useNewUrlParser: true, useCreateIndex: true});
@@ -44,6 +45,34 @@ app.use('/clientSide', clientSideRouter);
 //app.use( function(req, res, next) {
   //next(createError(404));
 //});
+app.use('/file', fileRouter);
+
+// To get all the images/files stored in MongoDB
+app.get('/file/images', function(req, res) {
+//calling the function from index.js class using routes object..
+fileRouter.getImages(function(err, genres) {
+if (err) {
+throw err;
+ 
+}
+res.json(genres);
+ 
+});
+});
+ 
+// URL : http://localhost:3000/images/(give you collectionID)
+// To get the single image/File using id from the MongoDB
+app.get('/file/images/:id', function(req, res) {
+ 
+//calling the function from index.js class using routes object..
+fileRouter.getImageById(req.params.id, function(err, genres) {
+if (err) {
+throw err;
+}
+//res.download(genres.path);
+res.send(genres.path)
+});
+});
 
 // error handler
 app.use(function(err, req, res, next) {
