@@ -10,7 +10,6 @@ var Heartbeat = require('../models/heartbeatModel');
 //Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let server = require('../server');
 let should = chai.should();
 let app = require('../app');
 
