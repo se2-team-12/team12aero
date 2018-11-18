@@ -159,7 +159,7 @@ router.post('/dailyDiagnostic/test', function (req, res) {
         GatewayId: req.body.GatewayId,
         Type: req.body.Type,
         Result: req.body.Result,
-        Time: req.body.Time,
+        TimeStamp: req.body.TimeStamp,
   
     });
     var token = req.headers['accesstoken'];
