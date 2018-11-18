@@ -14,7 +14,7 @@ let Heartbeat = require('../models/heartbeatModel');
 let Diagnostic = require('../models/diagnosticModel'); 
 let User = require('../models/userModel');
 let Gateway = require('../models/gatewayModel');
-let dailyDiagnostic = require('../models/dailyDiagnosticResultModel');
+let dailyDiagnostic = require('../models/dailyDiagnosticModel');
 let dailyDiagnosticResult = require('../models/dailyDiagnosticResultModel'); 
 let OndemandDiagnostic = require('../models/onDemandResultsModel');   
 
