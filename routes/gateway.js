@@ -123,6 +123,7 @@ router.post('/diagnostic/test', function (req, res) {
         Type: req.body.Type,
         Result: req.body.Result,
         IsClear: req.body.IsClear,
+        TimeStamp: req.body.TimeStamp
   
     });
     var token = req.headers['accesstoken'];
