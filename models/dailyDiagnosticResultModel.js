@@ -8,7 +8,8 @@ let dailyDiagnosticResultSchema = new Schema({
     Type: String,
     Result: String,
     TimeStamp: String,
-    GatewayId: String
+    GatewayId: String,
+    Time: String
 
 
 });
