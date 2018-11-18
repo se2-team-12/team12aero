@@ -153,7 +153,7 @@ router.get("/dailyDiagnostic/:GatewayId", (req, res, next) => {
     const id = req.params.GatewayId;
     let query = {GatewayId: id}
 
-    dailyDiagnostic.find(query)
+    dailyDiagnosticResult.find(query)
         .exec()
         .then(docs =>{
             console.log(docs);
