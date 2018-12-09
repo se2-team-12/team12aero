@@ -43,6 +43,12 @@ router.post('/heartbeat/:GatewayId', function (req, res) {
     var query = {GatewayId: id}
     var token = req.headers['accesstoken'];
     let tokenId = req.body.Token
+    Gateway.findOne({"GatewayId": id }, function(err, result) {
+    if (err) { /* handle err */ }
+
+    if (result) {
+        // we have a result
+
         if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
   
     if (token == tokenId){
@@ -78,6 +84,7 @@ router.post('/heartbeat/:GatewayId', function (req, res) {
         TimeStamp: req.body.TimeStamp,
     });
 
+
     heartbeat
         .save()
         .then(result => {
@@ -112,6 +119,12 @@ router.post('/heartbeat/:GatewayId', function (req, res) {
     else{
         return res.status(401).send({ auth: false, message: 'Invalid Token.' });
     }
+        } else {
+                   res.status(500).json({
+                error: "Not valid gateway"
+            });
+    }
+})
    
 });
 //Post a diagnostic test
@@ -197,24 +210,37 @@ router.post('/newGateway', function (req, res) {
     });
     const id = newGateway.GatewayId;
     var query = {GatewayId: id}
+    Gateway.findOne({"GatewayId": req.body.GatewayId }, function(err, result) {
+    if (err) { /* handle err */ }
 
+    if (result) {
+        // we have a result
 
-    Gateway.findOne(query)
-        .exec()
-        .then(docs =>{
-            console.log(docs);
-            res.status(200).json({
-                Gateway: docs,
-                message: "Gateway initialized successfully" 
+  
+        Gateway.findOne(query)
+            .exec()
+            .then(docs =>{
+
+                console.log(docs);
+                res.status(200).json({
+                    Gateway: docs,
+                    message: "Gateway initialized successfully" 
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    error: err
+                });
             });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
+    } else {
+                   res.status(500).json({
+                error: "Not valid gateway"
             });
-        });
+    }
 
+
+});
 });
 
 router.put('/', function (req, res) {
